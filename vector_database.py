@@ -2,13 +2,16 @@ from langchain_community.document_loaders import PDFPlumberLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_ollama import OllamaEmbeddings
 from langchain_community.vectorstores import FAISS
+import os
 
 # Step 1: Upload & Load raw PDF(s)
-
 pdfs_directory = 'pdfs/'
 
+# Create the directory if it doesn’t exist
+os.makedirs(pdfs_directory, exist_ok=True)
+
 def upload_pdf(file):
-    with open(pdfs_directory + file.name, "wb") as f:
+    with open(os.path.join(pdfs_directory, file.name), "wb") as f:
         f.write(file.getbuffer())
 
 def load_pdf(file_path):
@@ -16,7 +19,7 @@ def load_pdf(file_path):
     documents = loader.load()
     return documents
 
-file_path = 'universal_declaration_of_human_rights.pdf'
+file_path = 'pdfs/universal_declaration_of_human_rights.pdf'
 documents = load_pdf(file_path)
 # print(len(documents))
 
