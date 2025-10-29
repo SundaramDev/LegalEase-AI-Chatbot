@@ -2,7 +2,7 @@ streamlit
 langchain
 langchain-core
 langchain-community
-langchain_openai
+langchain-openai
 faiss-cpu
 openai
 tiktoken
