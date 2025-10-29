@@ -1,16 +1,21 @@
 import os
+from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from vector_database import faiss_db
-from dotenv import load_dotenv
 
 # Step 1: Load environment variables (contains OPENAI_API_KEY)
 load_dotenv()
-print("🔐 Loaded OpenAI API Key:", os.getenv("OPENAI_API_KEY")[:8], "********")
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("❌ OPENAI_API_KEY not found. Please add it to Streamlit Secrets or your .env file.")
+else:
+    print("🔐 Loaded OpenAI API Key:", api_key[:8], "********")
 
 # Step 2: Setup LLM (OpenAI GPT model)
 llm_model = ChatOpenAI(
-    model="gpt-4o-mini",  # You can use "gpt-4-turbo" or "gpt-3.5-turbo" too
+    model="gpt-4o-mini",   # Alternatives: "gpt-4-turbo" or "gpt-3.5-turbo"
     temperature=0.3
 )
 
