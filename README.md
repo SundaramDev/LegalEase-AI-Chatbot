@@ -5,6 +5,10 @@ It allows you to upload legal texts (like the Indian Constitution or case law PD
 
 ---
 
+[![LegalEase AI Demo](image.png)](https://legaleaseai.streamlit.app)
+> *Click the image above to try the live demo!*
+
+
 ##  Features
 
 -  Upload and analyze legal documents (e.g., PDFs)  
