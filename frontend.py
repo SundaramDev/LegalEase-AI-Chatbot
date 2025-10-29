@@ -1,6 +1,11 @@
 import streamlit as st
 from rag_pipeline import answer_query, retrieve_docs, llm_model
 import time
+import streamlit as st
+import os
+
+if os.getenv("RENDER"):
+    st.write("✅ App running on Render!")
 
 # --------------------------
 # App Configuration
